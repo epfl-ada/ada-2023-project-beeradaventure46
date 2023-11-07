@@ -1,3 +1,4 @@
+dataset_path = './data/BeerAdvocate/'
 def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, export:bool=False, file_name:str=None):
     """
     Converts a txt file to a csv file.
