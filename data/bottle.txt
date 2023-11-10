@@ -1,0 +1,7 @@
+bottle
+bottled
+corked
+capped
+sealed
+brown
+clear
