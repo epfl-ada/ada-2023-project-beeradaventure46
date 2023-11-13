@@ -1,15 +1,64 @@
-Title
+# Bottles, Cans, or Drafts: Pouring Over the Data to Decode the Perfect Sip
 
-Abstract: A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?
+## Abstract
+In this dive into the beer world, our project seeks to figure out the subtle differences that various ways of serving—bottle, can, and draft—bring to beer reviews. We're curious about what makes people like one style over another. Why? Because beer fans are all about their personal choices, and we want to know if the container affects how they rate and describe the brew.  
+By closely looking at a dataset of beer reviews, we want to spot any connections or trends that show how serving styles might sway the overall rating and what people say about the beer. As we take on this bubbly quest, we hope to quench the thirst for understanding how picking between a bottle, can, or draft might shape how beer lovers feel. 
 
-Research Questions: A list of research questions you would like to address during the project.
+## Research questions
+In this analysis, we would like to answer the following questions:
+* Does a particular serving type consistently receive higher or lower ratings compared to others?
+  
+* Are certain types of beers more frequently associated with a specific serving style?
+  
+* Do regional preferences influence the choice of a specific serving style in different parts of the world or the US?
 
-Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible.
+## Methods
+In order to find answers to these questions, we will use the following data analysis pipeline.
 
-Methods
+### Part 1: Getting to Know the Data
 
-Proposed timeline
+*Step 1: Preparing the Data*  
+Some datasets were initially provided as txt files. We created a function to read these files line by line, converting their content into dictionaries. These dictionaries were then saved as CSV files for simplified access.
 
-Organization within the team: A list of internal milestones up until project Milestone P3.
+*Step 2: Exploring Each Dataset*  
+We carefully examined the contents of each dataset, streamlining them by removing unnecessary columns and ensuring any missing values were appropriately filled.
 
-Questions for TAs (optional): Add here any questions you have for us related to the proposed project.
+*Step 3: Building the Master Dataset*  
+To facilitate seamless analysis, we merged all the datasets into one comprehensive dataset. This amalgamated dataset was also saved as a CSV file, ensuring efficiency in subsequent stages of our work.
+
+### Part 2: Data Enrichment
+
+*Step 4: Serving Type Classification*  
+We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset.
+
+*Step 5: Additional Review Metrics*  
+In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity.
+
+### Part 3: Analysis and answering the scientific questions *(TBD in Milestone 3)*
+
+*Step 6: ---* 
+
+*Step 7: ---* 
+
+*Step 8: Create datastory* 
+
+## Proposed timeline
+
+**17.11.2023** : Step 1 to 5
+
+**01.12.2023** : Homework 2
+
+**08.12.2023** : 
+
+**15.12.2023** : 
+
+**20.12.2023** : Step 8
+
+**22.12.2023** : Deadline Milestone 3
+
+## Organization within the team
+Anne-Valérie :  
+Agatha :  
+Thamin :  
+Tristan :  
+Victor :  
