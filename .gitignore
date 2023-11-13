@@ -1,3 +1,4 @@
 data/BeerAdvocate/
 __pycache__/
 averaged_perceptron_tagger/
+.ipynb_checkpoints/
