@@ -31,10 +31,36 @@ To facilitate seamless analysis, we merged all the datasets into one comprehensi
 *Step 4: Serving Type Classification*  
 We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset. Our approach first consists in applying a rule-based function to the tokenized reviews, according to grammar and syntax rules. Here there will be a trade-off between the accuracy of the function and the run time that can be consequent when adding extra rules. 
 
-Pseudo-code : 
-\begin{algorithmic}
-    \State $bottle \gets ('bottle', 'bottled', 'bottles', 'bomber')$
-\end{algorithmic}
+Pseudo-code :
+<hr style="clear:both">
+
+**Input :**  Textual review
+<hr style="clear:both">
+
+$bottle \gets (\text{'bottle'}, \text{bottled'}, \text{'bottles'}, \text{'bomber'})$\
+$can \gets (\text{'can'}, \text{'canned'}, \text{'cans'})$\
+$draft \gets (\text{'draft'}, \text{'tap'}, \text{draught'}, \text{'taps'}, \text{'cask'}, \text{'growler'})$
+
+$tokens \gets \text{nlp}(review)$\
+$servings  \gets \text{empty set}$\
+$serving \gets \text{None}$
+
+$\text{for} \; token \; \text{in} \; tokens :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; bottle :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'bottle'}$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; can :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'can'}$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; draft :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'draft'}$
+
+$\text{if} \; \text{length}(servings) \neq 1:$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $serving \gets \text{'unknown'}$\
+$\text{else}:$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $serving \gets \text{string}(servings)$
+<hr style="clear:both">
+
+**Output :** serving style
+<hr style="clear:both">
 
 *Step 5: Additional Review Metrics*  
 In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity.
