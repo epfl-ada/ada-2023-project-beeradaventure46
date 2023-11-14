@@ -43,17 +43,17 @@ $draft \gets (\text{'draft'}, \text{'tap'}, \text{draught'}, \text{'taps'}, \tex
 
 $tokens \gets \text{nlp}(review)$\
 $servings  \gets \text{empty set}$\
-$serving \gets \text{None}$
+$serving \gets$ None
 
-$\text{for} \; token \; \text{in} \; tokens :$\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; bottle :$\
+for $token$ in $tokens :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if $token$ in $bottle :$\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'bottle'}$\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; can :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if $token$ in $can :$\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'can'}$\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\text{if} \; token \; \text{in} \; draft :$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if $token$ in $draft :$\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $servings \gets \text{'draft'}$
 
-$\text{if} \; \text{length}(servings) \neq 1:$\
+if $\text{length}(servings) \neq 1:$\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $serving \gets \text{'unknown'}$\
 $\text{else}:$\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $serving \gets \text{string}(servings)$
