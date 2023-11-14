@@ -31,7 +31,7 @@ To facilitate seamless analysis, we merged all the datasets into one comprehensi
 *Step 4: Serving Type Classification*  
 We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset. Our approach first consists in applying a rule-based function to the tokenized reviews, according to grammar and syntax rules. Here there will be a trade-off between the accuracy of the function and the run time that can be consequent when adding extra rules. 
 
-Pseudo-code :
+This is the function as of now:
 <hr style="clear:both">
 
 **Input :**  Textual review
@@ -63,7 +63,7 @@ $\text{else}:$\
 <hr style="clear:both">
 
 *Step 5: Additional Review Metrics*  
-In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity.
+In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity. They might be used to extract the serving styles as well and perform a majority vote with the other methods for more robustness.
 
 ### Part 3: Analysis and answering the scientific questions *(TBD in Milestone 3)*
 
