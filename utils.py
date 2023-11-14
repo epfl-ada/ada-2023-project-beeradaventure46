@@ -1,4 +1,23 @@
+import time
+import spacy
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from tqdm import tqdm
+from scipy.stats import ttest_ind
+from textblob import TextBlob
+from sklearn.linear_model import LinearRegression
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from textstat import flesch_reading_ease
+from concurrent.futures import ThreadPoolExecutor
+from utils import *
+
 dataset_path = './data/BeerAdvocate/'
+
+### Part 1 
 def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, export:bool=False, file_name:str=None):
     """
     Converts a txt file to a csv file.
@@ -23,7 +42,6 @@ def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, exp
 
     # Initialize an empty dictionary to store the data
     data_dict = {}
-    current_key = None
     
     # Use tqdm to visualize progress
     with io.open(file_path, 'r', encoding='utf-8') as f:
@@ -33,7 +51,6 @@ def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, exp
             if line:  # Skip empty lines
                 key, value = line.split(':', 1)
                 data_dict.setdefault(key.strip(), []).append(value.strip())
-                current_key = key
     
     print('Finished processing lines.')
     
@@ -53,3 +70,103 @@ def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, exp
         print('File not exported.')
     
     return file_df
+
+def show_missing(df):
+    """
+    This function receives a dataframe and plots the percentage of missing values per column. It also prints for each column with missing values the number of missing values and the percentage of missing values. If there are no missing values, it prints a message saying so.
+    """
+    # check if there are any missing values
+    if df.isna().sum().sum() == 0:
+        print('There are no missing values in this dataset.')
+        return
+    else:
+        # show the percentage of missing values per columm
+        plt.figure()
+        (df.isna().sum() / len(df) * 100).plot(kind='barh', title='Percentage of missing values per column')
+        plt.xlabel('Percentage of missing values')
+        plt.show()
+
+        missing_values = df.isnull().sum()
+        total_values = df.shape[0]
+        missing_percentage = missing_values / total_values * 100
+        for col in df.columns:
+            if missing_values[col] > 0:
+                print("{:<25}: {:>5} missing values ({:.2f}%)".format(col, missing_values[col], missing_percentage[col]))
+
+
+### Part 2
+
+
+# Manual labelling
+def display_review(df):
+    """
+    Displays a review that has not been labelled yet and returns its index.
+    """
+    # filter the dataframe to only include rows where 'true_serving_type' is 'unknown'
+    df_not_set = df[df['true_serving_type'] == 'not_set']
+    if len(df_not_set) == 0:
+        print('No more reviews to label')
+        return None
+    else:
+        # print the 'text' column of the first row with unknown serving type
+        index = df_not_set.index[0]
+        print(f"Review {index}:\n{df_not_set.loc[index, 'text']}")
+        
+        return index
+
+def update_review_serving_type(df, index):
+    """
+    Changes the 'true_serving_type' column of the review with the given index.
+    """
+    # ask the user to input the serving type
+    if index is None:
+        return df
+    else:
+        serving_type = input("Enter the serving type (bottle/can/draft/unknown): ")
+        if serving_type not in ['bottle', 'can', 'draft', 'unknown']:
+            print('Invalid serving type')
+            return df
+        else:
+            # update the 'true_serving_type' column of the review with the given index
+            df.loc[index, 'true_serving_type'] = serving_type
+            return df
+        
+        
+def compute_accuracy(predictions, true_classes):
+    """
+    Computes the accuracy of the predictions.
+    """
+    if len(predictions) != len(true_classes):
+        raise ValueError("Length of predictions and true_classes must be the same.")
+
+    correct_count = sum(pred == true_class for pred, true_class in zip(predictions, true_classes))
+    total_count = len(predictions)
+
+    accuracy = correct_count / total_count if total_count > 0 else 0.0
+    print(f'correct_count : {correct_count}, total_count : {total_count}')
+    return accuracy
+
+
+def sentiment_analysis(df):
+    """
+    This function takes a pandas dataframe as input and adds two columns to it: 'polarity' and 'subjectivity'.
+    The 'polarity' column contains the polarity score of each review, which is a float between -1 and 1 indicating the sentiment of the review.
+    The 'subjectivity' column contains the subjectivity score of each review, which is a float between 0 and 1 indicating the degree of subjectivity of the review.
+    """
+    # Add 'polarity' and 'subjectivity' columns to the dataframe
+    with tqdm(total=len(df)) as pbar:
+        for index, row in df.iterrows():
+            df.at[index, 'polarity'] = TextBlob(row['text']).sentiment.polarity
+            df.at[index, 'subjectivity'] = TextBlob(row['text']).sentiment.subjectivity
+            pbar.update(1)
+    return df
+
+def compute_readability(df):
+    """
+    Compute the readability score of each review using the Flesch reading ease test.
+    """
+    with tqdm(total=len(df)) as pbar:
+        for index, row in df.iterrows():
+            df.at[index, 'readability_score'] = flesch_reading_ease(row['text'])
+            pbar.update(1)
+        return df
