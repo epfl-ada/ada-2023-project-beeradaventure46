@@ -29,7 +29,12 @@ To facilitate seamless analysis, we merged all the datasets into one comprehensi
 ### Part 2: Data Enrichment
 
 *Step 4: Serving Type Classification*  
-We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset.
+We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset. Our approach first consists in applying a rule-based function to the tokenized reviews, according to grammar and syntax rules. Here there will be a trade-off between the accuracy of the function and the run time that can be consequent when adding extra rules. 
+
+Pseudo-code : 
+\begin{algorithmic}
+    \State $bottle \gets ('bottle', 'bottled', 'bottles', 'bomber')$
+\end{algorithmic}
 
 *Step 5: Additional Review Metrics*  
 In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity.
