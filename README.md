@@ -67,9 +67,21 @@ In this step, we computed additional metrics for each review, including readabil
 
 ### Part 3: Analysis and answering the scientific questions *(TBD in Milestone 3)*
 
-*Step 6: ---* 
+*Step 6: Check representation of dataset*\
+Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the current methodology, approximately 57% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
 
-*Step 7: ---* 
+To achieve this, we propose analyzing the z-scores for each beer and comparing them to the z-scores of the initial dataset. If the distribution of z-scores in the final data closely aligns with the one of the initial data, it implies that the final dataset remains representative. Significant differences may be a sign of a shift in the distribution of the data.
+
+*Step 7: Analyse the influence of serving style*\
+This step is the core of our analysis. The goal is to use the enriched dataset and look at patterns between serving style. 
+
+1. <u>Association of Beer Types:</u> Investigate whether specific types of beers exhibit a trend to be associated more frequently with a particular serving style. This exploration may reveal intriguing patterns in consumer preferences and shed light on the links between beer characteristics and serving methods.
+
+2. <u>Regional Preferences:</u> Look into the influence of regional factors on the choice of serving styles in different geographical areas, globally or within the United States. This involves assessing whether location impact the preferences for bottle, can, or draft.
+
+3. <u>Rating Disparities:</u>
+Conduct an in-depth examination to analyse whether particular serving styles consistently have higher or lower ratings in comparison to others. The knowledge gained from the previous analysis should help us retrieve valuable information, and be more careful with association.
+The different ratings critera will be used such as: appearance, aroma, palate, taste	or overall rating. The use of Confidence Interval and t-statistic, will help us to know whether the differences are significative.
 
 *Step 8: Create datastory* 
 
@@ -79,17 +91,17 @@ In this step, we computed additional metrics for each review, including readabil
 
 **01.12.2023** : Homework 2
 
-**08.12.2023** : 
+**08.12.2023** : Step 6 + Step 7.1 - 7.2 
 
-**15.12.2023** : 
+**15.12.2023** : Step 7.3
 
 **20.12.2023** : Step 8
 
 **22.12.2023** : Deadline Milestone 3
 
 ## Organization within the team
-Anne-Valérie :  
-Agatha :  
-Thamin :  
-Tristan :  
-Victor :  
+Anne-Valérie :  Step 6\
+Agatha :  Step 7.2\
+Thamin :  Step 7.1\
+Tristan :  Step 7.3\
+Victor :  Step 7.3
