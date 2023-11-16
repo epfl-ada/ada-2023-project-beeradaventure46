@@ -70,7 +70,7 @@ In this step, we computed additional metrics for each review, including readabil
 *Step 6: Check representation of dataset*\
 Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the current methodology, approximately 57% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
 
-To achieve this, we propose analyzing the z-scores for each beer and comparing them to the z-scores of the initial dataset. If the distribution of z-scores in the final data closely aligns with the one of the initial data, it implies that the final dataset remains representative. Significant differences may be a sign of a shift in the distribution of the data.
+To achieve this, we propose to analyse the average score of beers. If the rating of the beer does not change significantly after the filtering, it means our dataset is representative of the initial one. Significant differences may be a sign of a shift in the distribution of the data.
 
 *Step 7: Analyse the influence of serving style*\
 This step is the core of our analysis. The goal is to use the enriched dataset and look at patterns between serving style. 
