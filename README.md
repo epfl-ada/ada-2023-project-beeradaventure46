@@ -62,6 +62,8 @@ $\text{else}:$\
 **Output :** serving style
 <hr style="clear:both">
 
+Please note that this function was written following very basic rules. It is subject to evolution in Milestone P3, where we want to look at the tense of the sentences and other grammatical rules to achieve a better extraction.
+
 *Step 5: Additional Review Metrics*  
 In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity. They might be used to extract the serving styles as well and perform a majority vote with the other methods for more robustness.
 
