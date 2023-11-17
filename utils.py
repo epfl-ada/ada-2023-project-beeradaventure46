@@ -1,3 +1,4 @@
+import io
 import time
 import spacy
 import pandas as pd
@@ -5,15 +6,15 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from typing import List
 from tqdm import tqdm
-from scipy.stats import ttest_ind
 from textblob import TextBlob
+from scipy.stats import ttest_ind
+from textstat import flesch_reading_ease
 from sklearn.linear_model import LinearRegression
+from concurrent.futures import ThreadPoolExecutor
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from textstat import flesch_reading_ease
-from concurrent.futures import ThreadPoolExecutor
-from utils import *
 
 dataset_path = './data/BeerAdvocate/'
 
@@ -71,16 +72,24 @@ def convert_txt_to_csv(dataset_path:str = dataset_path, input_file:str=None, exp
     
     return file_df
 
-def show_missing(df):
+def show_missing(df: pd.DataFrame) -> None:
     """
-    This function receives a dataframe and plots the percentage of missing values per column. It also prints for each column with missing values the number of missing values and the percentage of missing values. If there are no missing values, it prints a message saying so.
+    This function receives a dataframe and plots the percentage of missing values per column.
+    It also prints, for each column with missing values, the number of missing values and
+    the percentage of missing values. If there are no missing values, it prints a message saying so.
+
+    Parameters:
+    - df (pd.DataFrame): The input dataframe.
+
+    Returns:
+    - None
     """
     # check if there are any missing values
     if df.isna().sum().sum() == 0:
         print('There are no missing values in this dataset.')
         return
     else:
-        # show the percentage of missing values per columm
+        # show the percentage of missing values per column
         plt.figure()
         (df.isna().sum() / len(df) * 100).plot(kind='barh', title='Percentage of missing values per column')
         plt.xlabel('Percentage of missing values')
@@ -98,9 +107,15 @@ def show_missing(df):
 
 
 # Manual labelling
-def display_review(df):
+def display_review(df: pd.DataFrame) -> int or None:
     """
     Displays a review that has not been labelled yet and returns its index.
+
+    Parameters:
+    - df (pd.DataFrame): The input dataframe.
+
+    Returns:
+    - int or None: The index of the review to be displayed, or None if no more reviews to label.
     """
     # filter the dataframe to only include rows where 'true_serving_type' is 'unknown'
     df_not_set = df[df['true_serving_type'] == 'not_set']
@@ -114,9 +129,16 @@ def display_review(df):
         
         return index
 
-def update_review_serving_type(df, index):
+def update_review_serving_type(df: pd.DataFrame, index: int or None) -> pd.DataFrame:
     """
     Changes the 'true_serving_type' column of the review with the given index.
+
+    Parameters:
+    - df (pd.DataFrame): The input dataframe.
+    - index (int or None): The index of the review to update, or None if no review to update.
+
+    Returns:
+    - pd.DataFrame: The updated dataframe.
     """
     # ask the user to input the serving type
     if index is None:
@@ -132,9 +154,16 @@ def update_review_serving_type(df, index):
             return df
         
         
-def compute_accuracy(predictions, true_classes):
+def compute_accuracy(predictions: List[int], true_classes: List[int]) -> float:
     """
     Computes the accuracy of the predictions.
+
+    Parameters:
+    - predictions (List[int]): The predicted classes.
+    - true_classes (List[int]): The true classes.
+
+    Returns:
+    - float: The accuracy of the predictions.
     """
     if len(predictions) != len(true_classes):
         raise ValueError("Length of predictions and true_classes must be the same.")
@@ -143,15 +172,21 @@ def compute_accuracy(predictions, true_classes):
     total_count = len(predictions)
 
     accuracy = correct_count / total_count if total_count > 0 else 0.0
-    print(f'correct_count : {correct_count}, total_count : {total_count}')
+    print(f'correct_count: {correct_count}, total_count: {total_count}')
     return accuracy
 
 
-def sentiment_analysis(df):
+def sentiment_analysis(df: pd.DataFrame) -> pd.DataFrame:
     """
     This function takes a pandas dataframe as input and adds two columns to it: 'polarity' and 'subjectivity'.
     The 'polarity' column contains the polarity score of each review, which is a float between -1 and 1 indicating the sentiment of the review.
     The 'subjectivity' column contains the subjectivity score of each review, which is a float between 0 and 1 indicating the degree of subjectivity of the review.
+
+    Parameters:
+    - df (pd.DataFrame): The input dataframe.
+
+    Returns:
+    - pd.DataFrame: The dataframe with added 'polarity' and 'subjectivity' columns.
     """
     # Add 'polarity' and 'subjectivity' columns to the dataframe
     with tqdm(total=len(df)) as pbar:
@@ -161,9 +196,15 @@ def sentiment_analysis(df):
             pbar.update(1)
     return df
 
-def compute_readability(df):
+def compute_readability(df: pd.DataFrame) -> pd.DataFrame:
     """
     Compute the readability score of each review using the Flesch reading ease test.
+
+    Parameters:
+    - df (pd.DataFrame): The input dataframe.
+
+    Returns:
+    - pd.DataFrame: The dataframe with added 'readability_score' column.
     """
     with tqdm(total=len(df)) as pbar:
         for index, row in df.iterrows():
