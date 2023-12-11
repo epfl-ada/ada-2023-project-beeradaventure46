@@ -4,7 +4,7 @@ description: Use the textual reviews of a beer review dataset to find for each b
 show_downloads: True
 navigation:
   - title: Home
-    url: README
+    url: Homepage
   - title: Dataset
     url: dataset
   - title: Repository
