@@ -1,52 +1,52 @@
 # Introduction
 
 
-## How is Beer served ?
+# How is Beer served ?
 
 
-### Naive approach
+## Naive approach
 
 
-#### Results
+### Results
 
 
-### Similarity approach
+## Similarity approach
 
 
-#### Results
+### Results
 
 
-### Rule-based approach
+## Rule-based approach
 
 
-#### Results
+### Results
 
 
-### Tense-based approach
+## Tense-based approach
 
 
-#### Results
+### Results
 
 
-## Could filtering help ?
+# Could filtering help ?
 
 
-## How about the emotions beer evokes ?
+# How about the emotions beer evokes ?
 
 
-## Readability score and metrics update
+# Readability score and metrics update
 
 
-## Which countries are the most beer-friendly ?
+# Which countries are the most beer-friendly ?
 
 
-## Which beers are the most user-friendly ?
+# Which beers are the most user-friendly ?
 
 
-## Statistical analysis
+# Statistical analysis
 
 
-## Conclusion
+# Conclusion
 
 
 
