@@ -2,7 +2,3 @@ data/BeerAdvocate/
 __pycache__/
 averaged_perceptron_tagger/
 .ipynb_checkpoints/
-_site/
-.sass-cache/
-.jekyll-metadata
-Gemfile.lock
