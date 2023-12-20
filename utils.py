@@ -1,6 +1,7 @@
 import io
 import time
 import spacy
+import nltk
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -10,6 +11,9 @@ import pyarrow.parquet as pq
 from typing import List
 from tqdm import tqdm
 from textblob import TextBlob
+from nltk import pos_tag
+from nltk.tokenize import word_tokenize
+from spacy.tokens import Doc
 from scipy.stats import ttest_ind
 from textstat import flesch_reading_ease
 from sklearn.linear_model import LinearRegression
@@ -204,8 +208,7 @@ def update_review_serving_type(df: pd.DataFrame, index: int or None) -> pd.DataF
         else:
             # update the 'true_serving_type' column of the review with the given index
             df.loc[index, 'true_serving_type'] = serving_type
-            return df
-        
+            return df     
         
 def compute_accuracy(predictions: List[int], true_classes: List[int]) -> float:
     """
@@ -228,7 +231,6 @@ def compute_accuracy(predictions: List[int], true_classes: List[int]) -> float:
     print(f'correct_count: {correct_count}, total_count: {total_count}')
     return accuracy
 
-
 def sentiment_analysis(df: pd.DataFrame) -> pd.DataFrame:
     """
     This function takes a pandas dataframe as input and adds two columns to it: 'polarity' and 'subjectivity'.
@@ -245,7 +247,7 @@ def sentiment_analysis(df: pd.DataFrame) -> pd.DataFrame:
     with tqdm(total=len(df)) as pbar:
         for index, row in df.iterrows():
             df.at[index, 'polarity'] = TextBlob(row['text']).sentiment.polarity
-            df.at[index, 'subjectivity'] = TextBlob(row['text']).sentiment.subjectivity
+            # df.at[index, 'subjectivity'] = TextBlob(row['text']).sentiment.subjectivity
             pbar.update(1)
     return df
 
