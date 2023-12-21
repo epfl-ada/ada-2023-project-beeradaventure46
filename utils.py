@@ -7,6 +7,11 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pyarrow.parquet as pq
+import networkit as nk
+import networkx as nx
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
 
 from typing import List
 from tqdm import tqdm
