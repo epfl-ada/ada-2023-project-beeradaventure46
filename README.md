@@ -34,8 +34,6 @@ We initiated the serving-type classification by creating a sample of 250 reviews
 
 Our approach first involves applying a rule-based function to the tokenized reviews, based on grammar and syntax rules. Unknown reviews were then analyzed using the tense-based method, which retains serving types that were in the past. Here, there is a trade-off between the accuracy of the function and the runtime, which can be significant when adding extra rules.
 
-
-
 This is the function:
 <hr style="clear:both">
 
@@ -67,7 +65,6 @@ $\text{else}:$\
 **Output :** serving style
 <hr style="clear:both">
 
-
 *Step 5: Additional Review Metrics*  
 In this step, we calculated the polarity, mean, and standard deviation for each review, which were subsequently utilized for statistical analysis.
 
@@ -75,10 +72,7 @@ In this step, we calculated the polarity, mean, and standard deviation for each 
 
 *Step 6: Verifying the Dataset Representation* :
 Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the  approximately 56% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
-
-To achieve this, we analysed the average score of beers. The rating of the beer did not change significantly after the filtering, it means our dataset is still representative of the initial one. 
-
-
+. 
 ### Part 4: Visualization 
 *Step 7:  Temporal analysis* : 
 We analyzed the number of reviews for each year and found that the website has grown in popularity throughout the years, reaching a peak in 2011. Since then, the number of reviews has been decreasing.
@@ -108,9 +102,44 @@ Since the ratings were not dependent on the serving type, we sought other potent
 Using an ordinary least square regression model, we analyzed the differences between ratings for each serving style. In most cases within each group, draft beers tended to have higher ratings compared to other serving types, with the exception being sour beers.
 
 
-
-
 ### Part 6: Conclusion
 
 After conducting numerous analyses, it became apparent that the variations in ratings were not attributed to the serving style; rather, they could be attributed to personal preferences.
 
+
+### Organization within team
+
+<table class="tg" style="table-layout: fixed; width: 342px">
+<colgroup>
+<col style="width: 16px">
+<col style="width: 180px">
+</colgroup>
+<thead>
+  <tr>
+    <th class="tg-0lax">Teammate</th>
+    <th class="tg-0lax">Contributions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">Anne-Valérie </td>
+    <td class="tg-0lax"> (1)  <br> (2) <br> (3) <br> (4) <br> (5) </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Agatha </td>
+    <td class="tg-0lax"> (1) <br> (2) <br> (3) <br> (4) </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Thamin</td>
+    <td class="tg-0lax"> (1) <br> (2) <br> (3) <br> (4) </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Tristan</td>
+    <td class="tg-0lax"> (1) <br> (2)  <br> (3) <br> (4) </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Victor</td>
+    <td class="tg-0lax"> (1) <br> (2) <br> (3)  <br> (4) </td>
+  </tr>
+</tbody>
+</table>
