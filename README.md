@@ -123,23 +123,23 @@ After conducting numerous analyses, it became apparent that the variations in ra
 <tbody>
   <tr>
     <td class="tg-0lax">Anne-Valérie </td>
-    <td class="tg-0lax">1-  <br>2- <br>3- <br>4 - Worked on the Data Story</td>
+    <td class="tg-0lax">1 - Dataset Loading & First Analysis<br>2 - Dataset Representation check<br>3 - Statistical Analysis<br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Agatha </td>
-    <td class="tg-0lax">1- <br>2- <br>3- <br>4 - Worked on the Data Story</td>
+    <td class="tg-0lax">1 - Beer grouping <br>2 - Serving Style Algorithm<br>3 - Vizualizations<br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Thamin</td>
-    <td class="tg-0lax">1- <br>2- <br>3- <br>4 - Worked on the Data Story</td>
+    <td class="tg-0lax">1 - Beer grouping <br>2 - Serving Style Algorithm<br>3 - Vizualizations<br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Tristan</td>
-    <td class="tg-0lax">1- <br>2-  <br>3- <br>4 - Worked on the Data Story</td>
+    <td class="tg-0lax">1 - Dataset Loading & First Analysis <br>2 - Vizualizations<br>3 - Statistical Analysis<br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Victor</td>
-    <td class="tg-0lax">1- <br>2-  <br>3- <br>4 - Worked on the Data Story</td>
+    <td class="tg-0lax">1 - Serving Style Algorithm<br>2 - Vizualizations<br>3 - Statistical Analysis<br>4 - Worked on the Data Story</td>
   </tr>
 </tbody>
 </table>
