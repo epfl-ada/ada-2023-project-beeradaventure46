@@ -10,7 +10,7 @@ In this analysis, we would like to answer the following questions:
   
 * Are certain types of beers more frequently associated with a specific serving style?
   
-* Do regional preferences influence the choice of a specific serving style in different parts of the world or the US?
+* Do regional preferences influence the choice of a specific serving style 
 
 ## Methods
 In order to find answers to these questions, we will use the following data analysis pipeline.
@@ -29,7 +29,12 @@ To facilitate seamless analysis, we merged all the datasets into one comprehensi
 ### Part 2: Data Enrichment
 
 *Step 4: Serving Type Classification*  
-We initiated the serving type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, aiding us in determining the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset. Our approach first consists in applying a rule-based function to the tokenized reviews, according to grammar and syntax rules. Here there will be a trade-off between the accuracy of the function and the run time that can be consequent when adding extra rules. 
+
+We initiated the serving-type classification by creating a sample of 250 reviews. This sample underwent manual classification to assess the accuracy of various classifying algorithms, helping us determine the most suitable approach. Subsequently, we applied the chosen algorithm to the entire dataset.
+
+Our approach first involves applying a rule-based function to the tokenized reviews, based on grammar and syntax rules. Unknown reviews were then analyzed using the tense-based method, which retains serving types that were in the past. Here, there is a trade-off between the accuracy of the function and the runtime, which can be significant when adding extra rules.
+
+
 
 This is the function as of now:
 <hr style="clear:both">
@@ -62,48 +67,50 @@ $\text{else}:$\
 **Output :** serving style
 <hr style="clear:both">
 
-Please note that this function was written following very basic rules. It is subject to evolution in Milestone P3, where we want to look at the tense of the sentences and other grammatical rules to achieve a better extraction.
 
 *Step 5: Additional Review Metrics*  
-In this step, we computed additional metrics for each review, including readability score, polarity, and subjectivity. They might be used to extract the serving styles as well and perform a majority vote with the other methods for more robustness.
+In this step, we calculated the polarity, mean, and standard deviation for each review, which were subsequently utilized for statistical analysis.
 
-### Part 3: Analysis and answering the scientific questions *(TBD in Milestone 3)*
+### Part 3: Verifying the Dataset Representation
+*Step 6:  Verifying the Dataset Representation* 
+Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the  approximately 56% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
 
-*Step 6: Check representation of dataset*\
-Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the current methodology, approximately 57% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
+To achieve this, we analysed the average score of beers. The rating of the beer did not change significantly after the filtering, it means our dataset is still representative of the initial one. 
 
-To achieve this, we propose to analyse the average score of beers. If the rating of the beer does not change significantly after the filtering, it means our dataset is representative of the initial one. Significant differences may be a sign of a shift in the distribution of the data.
 
-*Step 7: Analyse the influence of serving style*\
-This step is the core of our analysis. The goal is to use the enriched dataset and look at patterns between serving style. 
+### Part 4: Visualization 
+*Step 7:  Temporal analysis* 
+We analyzed the number of reviews for each year and found that the website has grown in popularity throughout the years, reaching a peak in 2011. Since then, the number of reviews has been decreasing.
 
-1. <u>Association of Beer Types:</u> Investigate whether specific types of beers exhibit a trend to be associated more frequently with a particular serving style. This exploration may reveal intriguing patterns in consumer preferences and shed light on the links between beer characteristics and serving methods.
+*Step 8:  geographical analysis* 
+We calculated the number of reviews per world region to determine the location of the reviewers, and we found that the majority were from North America or Europe.
 
-2. <u>Regional Preferences:</u> Look into the influence of regional factors on the choice of serving styles in different geographical areas, globally or within the United States. This involves assessing whether location impact the preferences for bottle, can, or draft.
+*Step 9:  Beer style analysis* 
 
-3. <u>Rating Disparities:</u>
-Conduct an in-depth examination to analyse whether particular serving styles consistently have higher or lower ratings in comparison to others. The knowledge gained from the previous analysis should help us retrieve valuable information, and be more careful with association.
-The different ratings critera will be used such as: appearance, aroma, palate, taste	or overall rating. The use of Confidence Interval and t-statistic, will help us to know whether the differences are significative.
+We separated the beers into nine groups and analyzed the distribution of serving styles among these groups. In each group, the predominant serving style was found to be the bottle. The same analysis was performed for different regions of the world, and once again, the bottle emerged as the popular choice for serving.
 
-*Step 8: Create datastory* 
+### Part 5: Statistical analysis 
 
-## Proposed timeline
+*Step 10: Rating aspect* 
+To comprehend all aspects of the ratings, we conducted linear regression on each aspect. It appears that taste has the most significant impact on the rating, while appearance has the least impact.
 
-**17.11.2023** : Step 1 to 5
+*Step 11: The influence of serving type* 
+We analyzed the distribution of grades for each serving type and identified variations in ratings based on the serving type. As anticipated, there is a general preference for draft beers, indicating distinct consumer preferences.
 
-**01.12.2023** : Homework 2
+Through t-tests, we observed that all p-values were below 0.05, indicating a statistically significant difference in scores. However, due to a higher number of bottle reviews compared to draft or cans, we employed a Kruskal-Wallis test. Even with this test, the p-values remained below 0.05, suggesting that serving style does not have a significant impact on the ratings.
 
-**08.12.2023** : Step 6 + Step 7.1 - 7.2 
+*Step 12: Influence of serving type on the beer groups * 
+we did a chi scared and a t-tess that showed that the serving type is dependent on the beer group.
 
-**15.12.2023** : Step 7.3
+*Step 12: Influence of beer groups on the rating* 
+Since the ratings were not dependent on the serving type, we sought other potential confounders. Through a one-way ANOVA test for each beer group, we concluded that the means of ratings are not equal across all beer styles.
 
-**20.12.2023** : Step 8
+Using an ordinary least square regression model, we analyzed the differences between ratings for each serving style. In most cases within each group, draft beers tended to have higher ratings compared to other serving types, with the exception being sour beers.
 
-**22.12.2023** : Deadline Milestone 3
 
-## Organization within the team
-Anne-Valérie :  Step 6\
-Agatha :  Step 7.2\
-Thamin :  Step 7.1\
-Tristan :  Step 7.3\
-Victor :  Step 7.3
+
+
+### Part 6: Conclusion
+
+After conducting numerous analyses, it became apparent that the variations in ratings were not attributed to the serving style; rather, they could be attributed to individual personal preferences.
+
