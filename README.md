@@ -123,23 +123,23 @@ After conducting numerous analyses, it became apparent that the variations in ra
 <tbody>
   <tr>
     <td class="tg-0lax">Anne-Valérie </td>
-    <td class="tg-0lax"> (1)  <br> (2) <br> (3) <br> (4) <br> (5) </td>
+    <td class="tg-0lax">1-  <br>2- <br>3- <br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Agatha </td>
-    <td class="tg-0lax"> (1) <br> (2) <br> (3) <br> (4) </td>
+    <td class="tg-0lax">1- <br>2- <br>3- <br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Thamin</td>
-    <td class="tg-0lax"> (1) <br> (2) <br> (3) <br> (4) </td>
+    <td class="tg-0lax">1- <br>2- <br>3- <br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Tristan</td>
-    <td class="tg-0lax"> (1) <br> (2)  <br> (3) <br> (4) </td>
+    <td class="tg-0lax">1- <br>2-  <br>3- <br>4 - Worked on the Data Story</td>
   </tr>
   <tr>
     <td class="tg-0lax">Victor</td>
-    <td class="tg-0lax"> (1) <br> (2) <br> (3)  <br> (4) </td>
+    <td class="tg-0lax">1- <br>2-  <br>3- <br>4 - Worked on the Data Story</td>
   </tr>
 </tbody>
 </table>
