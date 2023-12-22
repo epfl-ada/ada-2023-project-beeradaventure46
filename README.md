@@ -1,4 +1,4 @@
-# Bottles, Cans, or Drafts: Pouring Over the Data to Decode the Perfect Sip
+# Bottles, Cans, or Drafts: Pouring Over the Data to Decode the Perfect Sip ([Website](https://anne-valerie.github.io/))
 
 ## Abstract
 In this dive into the beer world, our project seeks to figure out the subtle differences that various ways of serving—bottle, can, and draft—bring to beer reviews. We're curious about what makes people like one style over another. Why? Because beer fans are all about their personal choices, and we want to know if the container affects how they rate and describe the brew.  
@@ -18,13 +18,13 @@ In order to find answers to these questions, we will use the following data anal
 ### Part 1: Getting to Know the Data
 
 *Step 1: Preparing the Data*  
-Some datasets were initially provided as txt files. We created a function to read these files line by line, converting their content into dictionaries. These dictionaries were then saved as CSV files for simplified access.
+Some datasets were initially provided as txt files. We created a function to read these files line by line, converting their content into dictionaries. These dictionaries were then saved as .parquet files for simplified access.
 
 *Step 2: Exploring Each Dataset*  
 We carefully examined the contents of each dataset, streamlining them by removing unnecessary columns and ensuring any missing values were appropriately filled.
 
 *Step 3: Building the Master Dataset*  
-To facilitate seamless analysis, we merged all the datasets into one comprehensive dataset. This amalgamated dataset was also saved as a CSV file, ensuring efficiency in subsequent stages of our work.
+To facilitate seamless analysis, we merged all the datasets into one comprehensive dataset. This augmented dataset was also saved as a .parquet file, ensuring efficiency in subsequent stages of our work.
 
 ### Part 2: Data Enrichment
 
@@ -36,7 +36,7 @@ Our approach first involves applying a rule-based function to the tokenized revi
 
 
 
-This is the function as of now:
+This is the function:
 <hr style="clear:both">
 
 **Input :**  Textual review
@@ -72,37 +72,37 @@ $\text{else}:$\
 In this step, we calculated the polarity, mean, and standard deviation for each review, which were subsequently utilized for statistical analysis.
 
 ### Part 3: Verifying the Dataset Representation
-*Step 6:  Verifying the Dataset Representation* 
+
+*Step 6: Verifying the Dataset Representation* :
 Given that the dataset employed for analyses only uses reviews where a serving style has been specified, there is a substantial reduction in dataset size. (With the  approximately 56% of the original dataset has an unknown serving style.) It is imperative, therefore, to ensure that the utilized dataset remains representative of the initial dataset.
 
 To achieve this, we analysed the average score of beers. The rating of the beer did not change significantly after the filtering, it means our dataset is still representative of the initial one. 
 
 
 ### Part 4: Visualization 
-*Step 7:  Temporal analysis* 
+*Step 7:  Temporal analysis* : 
 We analyzed the number of reviews for each year and found that the website has grown in popularity throughout the years, reaching a peak in 2011. Since then, the number of reviews has been decreasing.
 
-*Step 8:  geographical analysis* 
+*Step 8:  geographical analysis*  :
 We calculated the number of reviews per world region to determine the location of the reviewers, and we found that the majority were from North America or Europe.
 
-*Step 9:  Beer style analysis* 
-
+*Step 9:  Beer style analysis* :
 We separated the beers into nine groups and analyzed the distribution of serving styles among these groups. In each group, the predominant serving style was found to be the bottle. The same analysis was performed for different regions of the world, and once again, the bottle emerged as the popular choice for serving.
 
 ### Part 5: Statistical analysis 
 
-*Step 10: Rating aspect* 
+*Step 10: Rating aspect* :
 To comprehend all aspects of the ratings, we conducted linear regression on each aspect. It appears that taste has the most significant impact on the rating, while appearance has the least impact.
 
-*Step 11: The influence of serving type* 
+*Step 11: The influence of serving type* :
 We analyzed the distribution of grades for each serving type and identified variations in ratings based on the serving type. As anticipated, there is a general preference for draft beers, indicating distinct consumer preferences.
 
 Through t-tests, we observed that all p-values were below 0.05, indicating a statistically significant difference in scores. However, due to a higher number of bottle reviews compared to draft or cans, we employed a Kruskal-Wallis test. Even with this test, the p-values remained below 0.05, suggesting that serving style does not have a significant impact on the ratings.
 
-*Step 12: Influence of serving type on the beer groups * 
-we did a chi scared and a t-tess that showed that the serving type is dependent on the beer group.
+*Step 12: Influence of serving type on the beer groups* :
+We performed a chi-square test and a t-test that showed that the serving type is dependent on the beer group.
 
-*Step 12: Influence of beer groups on the rating* 
+*Step 13: Influence of beer groups on the rating* :
 Since the ratings were not dependent on the serving type, we sought other potential confounders. Through a one-way ANOVA test for each beer group, we concluded that the means of ratings are not equal across all beer styles.
 
 Using an ordinary least square regression model, we analyzed the differences between ratings for each serving style. In most cases within each group, draft beers tended to have higher ratings compared to other serving types, with the exception being sour beers.
@@ -112,5 +112,5 @@ Using an ordinary least square regression model, we analyzed the differences bet
 
 ### Part 6: Conclusion
 
-After conducting numerous analyses, it became apparent that the variations in ratings were not attributed to the serving style; rather, they could be attributed to individual personal preferences.
+After conducting numerous analyses, it became apparent that the variations in ratings were not attributed to the serving style; rather, they could be attributed to personal preferences.
 
