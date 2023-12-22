@@ -11,6 +11,8 @@ import networkit as nk
 import networkx as nx
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
+import plotly.express as px
+import plotly.graph_objects as go
 
 
 from typing import List
