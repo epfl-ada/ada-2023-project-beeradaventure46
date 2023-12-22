@@ -14,7 +14,9 @@ import statsmodels.formula.api as smf
 import plotly.express as px
 import plotly.graph_objects as go
 
-
+from scipy.stats import f_oneway
+from plotly.subplots import make_subplots
+from scipy.stats import chi2_contingency
 from typing import List
 from tqdm import tqdm
 from textblob import TextBlob
